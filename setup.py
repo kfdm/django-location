@@ -1,14 +1,14 @@
 from setuptools import find_packages, setup
-from simplestats import __version__
+from position import __version__
 
 setup(
-    name='django-simplestats',
+    name='django-position',
     version=__version__,
     packages=find_packages(exclude=['test']),
     include_package_data=True,
     license='MIT License',
-    description='A simple stats package',
-    url='https://github.com/kfdm/django-simplestats',
+    description='A simple position tracker',
+    url='https://github.com/kfdm/django-position',
     author='Paul Traylor',
     classifiers=[
         'Environment :: Web Environment',
@@ -30,9 +30,8 @@ setup(
         'requests',
     ],
     entry_points={
-        'django.apps': ['stats = simplestats'],
-        'django.urls': ['stats = simplestats.urls'],
-        'rest.apps': ['location = simplestats.views:LocationViewSet'],
-        'simplestats.hourly': ['wanikani = simplestats.plugins.wanikani:WaniKani'],
+        'django.apps': ['location = position'],
+        'django.urls': ['location = position.urls'],
+        'rest.apps': ['location = position.views:LocationViewSet'],
     },
 )

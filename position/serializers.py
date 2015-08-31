@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from simplestats.models import Location
+
+from position.models import Location
 
 
 class LocationSerializer(serializers.ModelSerializer):

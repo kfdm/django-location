@@ -8,8 +8,8 @@ from icalendar import Calendar, Event
 from rest_framework import mixins, viewsets
 from rest_framework.decorators import list_route
 
-from simplestats.models import Location
-from simplestats.serializers import LocationSerializer
+from position.models import Location
+from position.serializers import LocationSerializer
 
 
 class LocationCalendarView(View):

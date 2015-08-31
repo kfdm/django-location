@@ -1,11 +1,6 @@
-from django.contrib import admin
-from simplestats.models import Location, Stat
-from django.contrib import messages
+from django.contrib import admin, messages
 
-class StatAdmin(admin.ModelAdmin):
-    list_display = ('created', 'key', 'value')
-    list_filter = ('key',)
-    date_hierarchy = 'created'
+from position.models import Location
 
 
 class LocationAdmin(admin.ModelAdmin):
@@ -27,5 +22,4 @@ class LocationAdmin(admin.ModelAdmin):
     list_filter = ('label', 'state')
     date_hierarchy = 'created'
 
-admin.site.register(Stat, StatAdmin)
 admin.site.register(Location, LocationAdmin)
