@@ -109,8 +109,9 @@ class LocationViewSet(
 
         # Check for any remaining locations that have not been 'popped'
         # and assume we're currently located there
-        now = datetime.datetime.now(pytz.utc)
+        now = datetime.datetime.now(pytz.utc).replace(microsecond=0)
         for label, entered in locations.items():
+            entered = entered.replace(microsecond=0)
             dataset['rows'].append({'c': [
                 {"v": label},
                 {"v": str(now - entered)},
