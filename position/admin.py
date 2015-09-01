@@ -20,6 +20,5 @@ class LocationAdmin(admin.ModelAdmin):
     actions = ['calculate_diff']
     list_display = ('label', 'created', 'state', '_location_url')
     list_filter = ('label', 'state')
-    date_hierarchy = 'created'
 
 admin.site.register(Location, LocationAdmin)
