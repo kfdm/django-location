@@ -6,4 +6,5 @@ from position.models import Location
 class LocationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Location
-        fields = ('created', 'label', 'location', 'state')
+        read_only = ('created',)
+        fields = ('label', 'location', 'state')
