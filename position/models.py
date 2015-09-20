@@ -14,5 +14,6 @@ class Location(models.Model):
             ('entered', _('Entered an Area')),
             ('exited', _('Exited an Area')),
             ('Do Button', _('Test Entry')),
+            ('Do Note', _('Manual Entry')),
         )
     )
