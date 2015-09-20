@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.timezone import now
+from django.utils.translation import ugettext_lazy as _
 
 
 class Location(models.Model):
@@ -9,9 +10,9 @@ class Location(models.Model):
     state = models.CharField(
         max_length=16,
         choices=(
-            ('', 'Unselected'),
-            ('entered', 'Entered an Area'),
-            ('exited', 'Exited an Area'),
-            ('Do Button', 'Test Entry'),
+            ('', _('Unselected')),
+            ('entered', _('Entered an Area')),
+            ('exited', _('Exited an Area')),
+            ('Do Button', _('Test Entry')),
         )
     )
