@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='location',
             name='state',
-            field=models.CharField(choices=[('', 'Unselected'), ('entered', 'Entered an Area'), ('exited', 'Exited an Area'), ('Do Button', 'Test Entry')], max_length=2),
+            field=models.CharField(choices=[('', 'Unselected'), ('entered', 'Entered an Area'), ('exited', 'Exited an Area'), ('Do Button', 'Test Entry')], max_length=16),
         ),
     ]
