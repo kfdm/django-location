@@ -30,8 +30,8 @@ setup(
         'requests',
     ],
     entry_points={
-        'django.apps': ['location = position'],
-        'django.urls': ['location = position.urls'],
-        'rest.apps': ['location = position.views:LocationViewSet'],
+        'powerplug.apps': ['location = position'],
+        'powerplug.urls': ['location = position.urls'],
+        'powerplug.rest': ['location = position.views:LocationViewSet'],
     },
 )
