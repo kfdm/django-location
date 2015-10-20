@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 class Location(models.Model):
     created = models.DateTimeField(default=now)
     label = models.TextField()
-    location = models.TextField()
+    location = models.URLField()
     state = models.CharField(
         max_length=16,
         choices=(
