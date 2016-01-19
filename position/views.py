@@ -22,7 +22,7 @@ class LocationCalendarView(View):
         cal.add('version', '2.0')
 
         locations = {}
-        for location in Location.objects.filter(created__gte=datetime.datetime.now() - delta):
+        for location in Location.objects.filter(created__gte=datetime.datetime.now() - delta).order_by('created'):
             if location.state == 'entered':
                 locations[location.label] = location.created
             elif location.state == 'exited':
