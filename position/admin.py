@@ -15,5 +15,6 @@ class LocationAdmin(admin.ModelAdmin):
     actions = ['calculate_diff']
     list_display = ('label', 'created', 'state')
     list_filter = ('label', 'state')
+    ordering = ('-created',)
 
 admin.site.register(Location, LocationAdmin)
