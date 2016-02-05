@@ -1,6 +1,6 @@
-<html>
-    <head>
-        <title>Location Timeline</title>
+{% extends "position/base.html" %}
+
+{% block javascript %}
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
     // https://developers.google.com/chart/interactive/docs/gallery/annotationchart
@@ -18,9 +18,9 @@
          wrap.draw();
     });
 </script>
-</head>
-<body>
+{% endblock %}
+
+{% block content %}
 <div id="chart_div" style="width:800; height:400">Loading...</div>
 <div id='duration'></div>
-</body>
-</html>
+{% endblock %}

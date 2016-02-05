@@ -31,7 +31,8 @@ setup(
     ],
     entry_points={
         'powerplug.apps': ['location = position'],
-        'powerplug.urls': ['location = position.urls'],
         'powerplug.rest': ['location = position.views:LocationViewSet'],
+        'powerplug.subnav': ['location = position.urls:subnav'],
+        'powerplug.urls': ['location = position.urls'],
     },
 )
