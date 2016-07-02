@@ -1,15 +1,20 @@
 import datetime
 import json
+import time
 
 import pytz
-from django.http import HttpResponse
-from django.views.generic.base import View
 from icalendar import Calendar, Event
 from rest_framework import mixins, viewsets
 from rest_framework.decorators import list_route
 
 from position.models import Location
 from position.serializers import LocationSerializer
+
+from django.http import HttpResponse, JsonResponse
+from django.utils.timezone import make_aware
+from django.views.generic.base import View
+
+DATETIME_FORMAT = '%Y-%m-%dT%H:%M:%S.%fZ'
 
 
 class LocationCalendarView(View):
@@ -74,6 +79,27 @@ class LocationViewSet(
     """
     queryset = Location.objects.all()
     serializer_class = LocationSerializer
+
+    @list_route(methods=['post'])
+    def annotations(self, request):
+        body = json.loads(request.body.decode("utf-8"))
+        start = make_aware(datetime.datetime.strptime(body['range']['from'], DATETIME_FORMAT), pytz.utc)
+        end = make_aware(datetime.datetime.strptime(body['range']['to'], DATETIME_FORMAT), pytz.utc)
+
+        results = []
+
+        for location in Location.objects\
+                .filter(created__gte=start)\
+                .filter(created__lt=end)\
+                .filter(state=body['annotation']['query']):
+
+            results.append({
+                'annotation': body['annotation']['name'],
+                'time': time.mktime(location.created.timetuple()) * 1000,
+                'title': location.label,
+                'tags': location.state,
+              })
+        return JsonResponse(results, safe=False)
 
     @list_route()
     def datatable(self, request):
